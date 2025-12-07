@@ -1,0 +1,81 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels
+@using Umbraco.Cms.Core.Models
+@using Umbraco.Cms.Core.Models.Blocks
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
+
+@{
+    Layout = "mainLayout.cshtml";
+
+    var introText = Model.Value<string>("introText");
+    var serviceBlocks = Model.Value<BlockListModel>("serviceBlocks");
+}
+
+<section class="relative bg-[#f7f7f5] py-20 overflow-hidden">
+    <div class="pointer-events-none absolute -left-24 bottom-[-6rem] h-72 w-72 rounded-full border border-slate-200/60"></div>
+    <div class="pointer-events-none absolute -right-24 -top-20 h-80 w-80 rounded-full border border-slate-200/50"></div>
+
+    <div class="relative z-10 max-w-6xl mx-auto px-4">
+        <div class="max-w-3xl mx-auto text-center mb-14">
+            <p class="uppercase tracking-[0.25em] text-xs text-[#c8b59e] mb-3">
+                Services
+            </p>
+
+            <h1 class="text-3xl md:text-4xl font-bold tracking-tight text-[#4f5955]">
+                @Model.Name
+            </h1>
+
+            @if (!string.IsNullOrWhiteSpace(introText))
+            {
+                <div class="mt-5 text-base md:text-lg text-slate-600 leading-relaxed">
+                    @Html.Raw(introText)
+                </div>
+            }
+        </div>
+
+        <div class="grid gap-8 md:grid-cols-3">
+            @if (serviceBlocks != null && serviceBlocks.Any())
+            {
+                foreach (var block in serviceBlocks)
+                {
+                    var icon = block.Content.Value<MediaWithCrops>("icon");
+                    var title = block.Content.Value<string>("title");
+                    var description = block.Content.Value<string>("description");
+
+                    <article class="bg-white border border-slate-200/70 rounded-lg px-7 py-8 flex flex-col h-full shadow-sm">
+                        <div class="mb-6">
+                            @if (icon != null)
+                            {
+                                <div class="h-12 w-12 rounded-full bg-[#f7f7f5] flex items-center justify-center overflow-hidden">
+                                    <img src="@icon.Url()" alt="@title" class="h-8 w-8 object-contain" />
+                                </div>
+                            }
+                        </div>
+
+                        <h2 class="text-lg font-semibold text-[#4f5955] mb-3">
+                            @title
+                        </h2>
+
+                        @if (!string.IsNullOrWhiteSpace(description))
+                        {
+                            <div class="text-sm text-slate-600 leading-relaxed mb-4 flex-1">
+                                @Html.Raw(description)
+                            </div>
+                        }
+
+                        <div class="mt-4">
+                            <span class="text-xs font-semibold tracking-[0.2em] uppercase text-[#c8b59e]">
+                                Learn more
+                            </span>
+                        </div>
+                    </article>
+                }
+            }
+            else
+            {
+                <div class="md:col-span-3 text-center text-slate-500 text-sm">
+                    No services have been added yet.
+                </div>
+            }
+        </div>
+    </div>
+</section>

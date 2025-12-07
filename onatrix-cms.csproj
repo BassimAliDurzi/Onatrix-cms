@@ -17,6 +17,15 @@
     <RuntimeHostConfigurationOption Include="System.Globalization.AppLocalIcu" Value="72.1.0.3" Condition="$(RuntimeIdentifier.StartsWith('linux')) or $(RuntimeIdentifier.StartsWith('win')) or ('$(RuntimeIdentifier)' == '' and !$([MSBuild]::IsOSPlatform('osx')))" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Include="wwwroot\css\input.css" />
+    <None Include="wwwroot\css\style.css" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Views\Partials\blocklist\Components\" />
+  </ItemGroup>
+
   <PropertyGroup>
     <CopyRazorGenerateFilesToPublishDirectory>true</CopyRazorGenerateFilesToPublishDirectory>
   </PropertyGroup>

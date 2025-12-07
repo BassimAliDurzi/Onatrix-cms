@@ -50,20 +50,20 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		// properties
 
 		///<summary>
+		/// Background Image
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "16.3.4+0d2393d")]
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		[ImplementPropertyType("heroBgImage")]
+		public virtual global::Umbraco.Cms.Core.Models.MediaWithCrops HeroBgImage => this.Value<global::Umbraco.Cms.Core.Models.MediaWithCrops>(_publishedValueFallback, "heroBgImage");
+
+		///<summary>
 		/// Link
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "16.3.4+0d2393d")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
 		[ImplementPropertyType("heroLink")]
 		public virtual global::Umbraco.Cms.Core.Models.Link HeroLink => this.Value<global::Umbraco.Cms.Core.Models.Link>(_publishedValueFallback, "heroLink");
-
-		///<summary>
-		/// Background Image
-		///</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "16.3.4+0d2393d")]
-		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		[ImplementPropertyType("heroPgImage")]
-		public virtual global::Umbraco.Cms.Core.Models.MediaWithCrops HeroPgImage => this.Value<global::Umbraco.Cms.Core.Models.MediaWithCrops>(_publishedValueFallback, "heroPgImage");
 
 		///<summary>
 		/// Text
@@ -80,5 +80,253 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
 		[ImplementPropertyType("heroTitle")]
 		public virtual string HeroTitle => this.Value<string>(_publishedValueFallback, "heroTitle");
+
+		///<summary>
+		/// Intro Description
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "16.3.4+0d2393d")]
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		[ImplementPropertyType("introDescription")]
+		public virtual global::Umbraco.Cms.Core.Strings.IHtmlEncodedString IntroDescription => this.Value<global::Umbraco.Cms.Core.Strings.IHtmlEncodedString>(_publishedValueFallback, "introDescription");
+
+		///<summary>
+		/// Intro Founder
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "16.3.4+0d2393d")]
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		[ImplementPropertyType("introFounder")]
+		public virtual string IntroFounder => this.Value<string>(_publishedValueFallback, "introFounder");
+
+		///<summary>
+		/// Intro Signature 
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "16.3.4+0d2393d")]
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		[ImplementPropertyType("introSignature")]
+		public virtual global::Umbraco.Cms.Core.Models.MediaWithCrops IntroSignature => this.Value<global::Umbraco.Cms.Core.Models.MediaWithCrops>(_publishedValueFallback, "introSignature");
+
+		///<summary>
+		/// Intro Text
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "16.3.4+0d2393d")]
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		[ImplementPropertyType("introText")]
+		public virtual string IntroText => this.Value<string>(_publishedValueFallback, "introText");
+
+		///<summary>
+		/// Intro Title
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "16.3.4+0d2393d")]
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		[ImplementPropertyType("introTitle")]
+		public virtual string IntroTitle => this.Value<string>(_publishedValueFallback, "introTitle");
+
+		///<summary>
+		/// Section 2 Photo
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "16.3.4+0d2393d")]
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		[ImplementPropertyType("section2Photo")]
+		public virtual global::Umbraco.Cms.Core.Models.MediaWithCrops Section2Photo => this.Value<global::Umbraco.Cms.Core.Models.MediaWithCrops>(_publishedValueFallback, "section2Photo");
+
+		///<summary>
+		/// Section 2 Text
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "16.3.4+0d2393d")]
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		[ImplementPropertyType("section2Text")]
+		public virtual global::Umbraco.Cms.Core.Strings.IHtmlEncodedString Section2Text => this.Value<global::Umbraco.Cms.Core.Strings.IHtmlEncodedString>(_publishedValueFallback, "section2Text");
+
+		///<summary>
+		/// Section 2 Title
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "16.3.4+0d2393d")]
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		[ImplementPropertyType("section2Title")]
+		public virtual string Section2Title => this.Value<string>(_publishedValueFallback, "section2Title");
+
+		///<summary>
+		/// Section 3 Photo
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "16.3.4+0d2393d")]
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		[ImplementPropertyType("section3Photo")]
+		public virtual global::Umbraco.Cms.Core.Models.MediaWithCrops Section3Photo => this.Value<global::Umbraco.Cms.Core.Models.MediaWithCrops>(_publishedValueFallback, "section3Photo");
+
+		///<summary>
+		/// Section 3 Text
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "16.3.4+0d2393d")]
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		[ImplementPropertyType("section3Text")]
+		public virtual global::Umbraco.Cms.Core.Strings.IHtmlEncodedString Section3Text => this.Value<global::Umbraco.Cms.Core.Strings.IHtmlEncodedString>(_publishedValueFallback, "section3Text");
+
+		///<summary>
+		/// Section 3 Title
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "16.3.4+0d2393d")]
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		[ImplementPropertyType("section3Title")]
+		public virtual string Section3Title => this.Value<string>(_publishedValueFallback, "section3Title");
+
+		///<summary>
+		/// Service Description 1
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "16.3.4+0d2393d")]
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		[ImplementPropertyType("serviceDescription1")]
+		public virtual global::Umbraco.Cms.Core.Strings.IHtmlEncodedString ServiceDescription1 => this.Value<global::Umbraco.Cms.Core.Strings.IHtmlEncodedString>(_publishedValueFallback, "serviceDescription1");
+
+		///<summary>
+		/// Service Description 2
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "16.3.4+0d2393d")]
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		[ImplementPropertyType("serviceDescription2")]
+		public virtual global::Umbraco.Cms.Core.Strings.IHtmlEncodedString ServiceDescription2 => this.Value<global::Umbraco.Cms.Core.Strings.IHtmlEncodedString>(_publishedValueFallback, "serviceDescription2");
+
+		///<summary>
+		/// Service Description 3
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "16.3.4+0d2393d")]
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		[ImplementPropertyType("serviceDescription3")]
+		public virtual global::Umbraco.Cms.Core.Strings.IHtmlEncodedString ServiceDescription3 => this.Value<global::Umbraco.Cms.Core.Strings.IHtmlEncodedString>(_publishedValueFallback, "serviceDescription3");
+
+		///<summary>
+		/// Service Description 4
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "16.3.4+0d2393d")]
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		[ImplementPropertyType("serviceDescription4")]
+		public virtual global::Umbraco.Cms.Core.Strings.IHtmlEncodedString ServiceDescription4 => this.Value<global::Umbraco.Cms.Core.Strings.IHtmlEncodedString>(_publishedValueFallback, "serviceDescription4");
+
+		///<summary>
+		/// Service Description 5
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "16.3.4+0d2393d")]
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		[ImplementPropertyType("serviceDescription5")]
+		public virtual global::Umbraco.Cms.Core.Strings.IHtmlEncodedString ServiceDescription5 => this.Value<global::Umbraco.Cms.Core.Strings.IHtmlEncodedString>(_publishedValueFallback, "serviceDescription5");
+
+		///<summary>
+		/// Service Description 6
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "16.3.4+0d2393d")]
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		[ImplementPropertyType("serviceDescription6")]
+		public virtual global::Umbraco.Cms.Core.Strings.IHtmlEncodedString ServiceDescription6 => this.Value<global::Umbraco.Cms.Core.Strings.IHtmlEncodedString>(_publishedValueFallback, "serviceDescription6");
+
+		///<summary>
+		/// Service Photo 1
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "16.3.4+0d2393d")]
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		[ImplementPropertyType("servicePhoto1")]
+		public virtual global::Umbraco.Cms.Core.Models.MediaWithCrops ServicePhoto1 => this.Value<global::Umbraco.Cms.Core.Models.MediaWithCrops>(_publishedValueFallback, "servicePhoto1");
+
+		///<summary>
+		/// Service Photo 2
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "16.3.4+0d2393d")]
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		[ImplementPropertyType("servicePhoto2")]
+		public virtual global::Umbraco.Cms.Core.Models.MediaWithCrops ServicePhoto2 => this.Value<global::Umbraco.Cms.Core.Models.MediaWithCrops>(_publishedValueFallback, "servicePhoto2");
+
+		///<summary>
+		/// Service Photo 3
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "16.3.4+0d2393d")]
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		[ImplementPropertyType("servicePhoto3")]
+		public virtual global::Umbraco.Cms.Core.Models.MediaWithCrops ServicePhoto3 => this.Value<global::Umbraco.Cms.Core.Models.MediaWithCrops>(_publishedValueFallback, "servicePhoto3");
+
+		///<summary>
+		/// Service Photo 4
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "16.3.4+0d2393d")]
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		[ImplementPropertyType("servicePhoto4")]
+		public virtual global::Umbraco.Cms.Core.Models.MediaWithCrops ServicePhoto4 => this.Value<global::Umbraco.Cms.Core.Models.MediaWithCrops>(_publishedValueFallback, "servicePhoto4");
+
+		///<summary>
+		/// Service Photo 5
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "16.3.4+0d2393d")]
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		[ImplementPropertyType("servicePhoto5")]
+		public virtual global::Umbraco.Cms.Core.Models.MediaWithCrops ServicePhoto5 => this.Value<global::Umbraco.Cms.Core.Models.MediaWithCrops>(_publishedValueFallback, "servicePhoto5");
+
+		///<summary>
+		/// Service Photo 6
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "16.3.4+0d2393d")]
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		[ImplementPropertyType("servicePhoto6")]
+		public virtual global::Umbraco.Cms.Core.Models.MediaWithCrops ServicePhoto6 => this.Value<global::Umbraco.Cms.Core.Models.MediaWithCrops>(_publishedValueFallback, "servicePhoto6");
+
+		///<summary>
+		/// Service Text
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "16.3.4+0d2393d")]
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		[ImplementPropertyType("serviceText")]
+		public virtual global::Umbraco.Cms.Core.Strings.IHtmlEncodedString ServiceText => this.Value<global::Umbraco.Cms.Core.Strings.IHtmlEncodedString>(_publishedValueFallback, "serviceText");
+
+		///<summary>
+		/// Service Title
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "16.3.4+0d2393d")]
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		[ImplementPropertyType("serviceTitle")]
+		public virtual string ServiceTitle => this.Value<string>(_publishedValueFallback, "serviceTitle");
+
+		///<summary>
+		/// Service Title 1
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "16.3.4+0d2393d")]
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		[ImplementPropertyType("serviceTitle1")]
+		public virtual string ServiceTitle1 => this.Value<string>(_publishedValueFallback, "serviceTitle1");
+
+		///<summary>
+		/// Service Title 2
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "16.3.4+0d2393d")]
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		[ImplementPropertyType("serviceTitle2")]
+		public virtual string ServiceTitle2 => this.Value<string>(_publishedValueFallback, "serviceTitle2");
+
+		///<summary>
+		/// Service Title 3
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "16.3.4+0d2393d")]
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		[ImplementPropertyType("serviceTitle3")]
+		public virtual string ServiceTitle3 => this.Value<string>(_publishedValueFallback, "serviceTitle3");
+
+		///<summary>
+		/// Service Title 4
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "16.3.4+0d2393d")]
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		[ImplementPropertyType("serviceTitle4")]
+		public virtual string ServiceTitle4 => this.Value<string>(_publishedValueFallback, "serviceTitle4");
+
+		///<summary>
+		/// Service Title 5
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "16.3.4+0d2393d")]
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		[ImplementPropertyType("serviceTitle5")]
+		public virtual string ServiceTitle5 => this.Value<string>(_publishedValueFallback, "serviceTitle5");
+
+		///<summary>
+		/// Service Title 6
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "16.3.4+0d2393d")]
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		[ImplementPropertyType("serviceTitle6")]
+		public virtual string ServiceTitle6 => this.Value<string>(_publishedValueFallback, "serviceTitle6");
 	}
 }

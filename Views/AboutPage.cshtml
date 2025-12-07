@@ -1,0 +1,244 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
+@using Umbraco.Cms.Core.Models
+@using Umbraco.Cms.Core.Models.Blocks
+@using Umbraco.Extensions
+@using System
+
+@{
+    Layout = "mainLayout.cshtml";
+
+    var home = Model.Root();
+
+    var heroTitle = Model.Value<string>("heroTitle") ?? "About Us";
+    var heroKicker = Model.Value<string>("heroKicker");
+    var heroHeading = Model.Value<string>("heroHeading");
+    var heroBody = Model.Value<string>("heroBody");
+    var heroAuthorName = Model.Value<string>("heroAuthorName");
+    var heroAuthorRole = Model.Value<string>("heroAuthorRole");
+    var heroImage = Model.Value<MediaWithCrops>("heroImage");
+
+    var testimonialKicker = Model.Value<string>("testimonialKicker");
+    var testimonialHeading = Model.Value<string>("testimonialHeading");
+    var testimonialQuote = Model.Value<string>("testimonialQuote");
+    var testimonialName = Model.Value<string>("testimonialName");
+    var testimonialRole = Model.Value<string>("testimonialRole");
+    var testimonialImage = Model.Value<MediaWithCrops>("testimonialImage");
+
+    var teamTitle = Model.Value<string>("teamTitle");
+    var teamHeader = Model.Value<string>("teamHeader");
+    var teamBlocks = Model.Value<IEnumerable<BlockListItem>>("teamMembers");
+
+    var contactInfoHeader = Model.Value<string>("contactInfoHeader");
+    var contactAddress = Model.Value<string>("contactAddress");
+    var contactPhone = Model.Value<string>("contactPhone");
+    var contactEmail = Model.Value<string>("contactEmail");
+    var contactPhoto = Model.Value<MediaWithCrops>("contactPhoto");
+}
+
+<partial name="Partials/Layouts/_PageHeader" />
+
+<section class="py-16 bg-white">
+    <div class="max-w-6xl mx-auto px-4">
+        <div class="mb-8">
+            <p class="text-xs uppercase tracking-[0.25em] text-slate-400">@heroTitle</p>
+            <h1 class="mt-2 text-3xl md:text-4xl font-bold text-[#4f5955]">@heroTitle</h1>
+
+            @if (!string.IsNullOrWhiteSpace(heroKicker))
+            {
+            <p class="mt-1 text-xs text-slate-500">@heroKicker</p>
+            }
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-12 items-start">
+            <div class="space-y-4">
+                <div class="bg-white">
+                    @if (heroImage != null)
+                    {
+                    <img src="@heroImage.Url()" alt="@heroAuthorName" class="w-full h-[360px] md:h-[800px] object-cover" />
+                    }
+
+                    @if (!string.IsNullOrWhiteSpace(heroAuthorName) || !string.IsNullOrWhiteSpace(heroAuthorRole))
+                    {
+                    <div class="px-6 py-4 block">
+                        <p class=" text-xm font-normal text-slate-500 mt-1">
+                            @heroAuthorName
+                            @if (!string.IsNullOrWhiteSpace(heroAuthorRole))
+                                {
+                            <span class=" text-xm font-normal text-slate-500 mt-1">- @heroAuthorRole</span>
+                                }
+                        </p>
+                    </div>
+                    }
+                </div>
+            </div>
+
+            <div class="space-y-5">
+                @if (!string.IsNullOrWhiteSpace(heroHeading))
+                {
+                <p class="text-lg md:text-xl italic text-slate-700 leading-relaxed">@heroHeading</p>
+                }
+
+                @if (!string.IsNullOrWhiteSpace(heroBody))
+                {
+                <div class="prose max-w-none text-slate-600 text-sm md:text-base leading-relaxed">
+                    @Html.Raw(heroBody)
+                </div>
+                }
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="bg-[#ffffff] ">
+    <div class="max-w-6xl mx-auto px-4 py-16 grid md:grid-cols-2 gap-10 items-center">
+        <div>
+            @if (!string.IsNullOrWhiteSpace(testimonialKicker))
+            {
+            <p class="text-xs uppercase tracking-[0.25em] text-[#D9C3A9] font-semibold mb-2">@testimonialKicker</p>
+            }
+
+            @if (!string.IsNullOrWhiteSpace(testimonialHeading))
+            {
+            <h2 class="text-2xl md:text-4xl font-bold text-[#4f5955] mb-4">@testimonialHeading</h2>
+            }
+
+            @if (!string.IsNullOrWhiteSpace(testimonialQuote))
+            {
+            <div class="text-slate-600 text-sm md:text-base leading-relaxed mb-6">@Html.Raw(testimonialQuote)</div>
+            }
+
+            <div class="space-y-1">
+                @if (!string.IsNullOrWhiteSpace(testimonialName))
+                {
+                <p class="font-xs text-slate-900">@testimonialName</p>
+                }
+                @if (!string.IsNullOrWhiteSpace(testimonialRole))
+                {
+                <p class="text-xl text-slate-900">@testimonialRole</p>
+                }
+            </div>
+        </div>
+
+        <div>
+            @if (testimonialImage != null)
+            {
+            <img src="@testimonialImage.Url()" alt="@testimonialHeading" class="w-full rounded-xl shadow-lg object-cover" />
+            }
+        </div>
+    </div>
+</section>
+
+<section class="bg-white">
+    <div class="max-w-6xl mx-auto px-4 py-16">
+        <div class="text-center mb-12">
+            @if (!string.IsNullOrWhiteSpace(teamTitle))
+            {
+            <p class="text-xs uppercase tracking-[0.25em] text-[#D9C3A9] font-semibold mb-2">@teamTitle</p>
+            }
+
+            @if (!string.IsNullOrWhiteSpace(teamHeader))
+            {
+            <div class="space-y-3">
+                <div class="text-2xl md:text-3xl font-bold text-[#4F5955]">@Html.Raw(teamHeader)</div>
+            </div>
+            }
+        </div>
+
+        <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-8">
+            @if (teamBlocks != null && teamBlocks.Any())
+    {
+        foreach (var item in teamBlocks)
+        {
+            var name = item.Content.Value<string>("memberName");
+            var role = item.Content.Value<string>("memberRole");
+
+            var photo =
+                item.Content.Value<MediaWithCrops>("photo")
+                ?? item.Content.Value<MediaWithCrops>("memberPhoto")
+                ?? item.Content.Value<MediaWithCrops>("teamPhoto")
+                ?? item.Content.Value<MediaWithCrops>("image");
+
+            <div class="bg-[#ffffff] rounded-xl shadow-sm overflow-hidden">
+                @if (photo != null)
+                {
+                <img src="@photo.Url()" alt="@name" class="w-full h-[400px] object-cover" />
+                }
+                <div class="p-5">
+                    @if (!string.IsNullOrWhiteSpace(name))
+                    {
+                    <p class="font-semibold text-[#4F5955]">@name</p>
+                    }
+                    @if (!string.IsNullOrWhiteSpace(role))
+                    {
+                    <p class="text-sm text-slate-500 mt-1">@role</p>
+                    }
+                </div>
+            </div>
+        }
+    }
+    else
+    {
+            <p class="text-slate-500 col-span-full text-center">
+                Add team members from the “Team Members” block list in the backoffice.
+            </p>
+    }
+        </div>
+
+    </div>
+</section>
+
+<section class="bg-[#ffffff]">
+    <div class="max-w-6xl mx-auto px-4 py-16 grid md:grid-cols-2 gap-5 items-center">
+        <div class="flex justify-center md:justify-start">
+            <div class="bg-white max-w-sm w-full">
+                @if (contactPhoto != null)
+                {
+                <img src="@contactPhoto.Url()" alt="Contact person" class="w-full h-[600px] object-cover" />
+                }
+            </div>
+        </div>
+
+        <div class="space-y-10">
+            @if (!string.IsNullOrWhiteSpace(contactInfoHeader))
+    {
+            <h2 class="text-2xl md:text-4xl font-bold text-[#4f5955] leading-snug">
+                @contactInfoHeader
+            </h2>
+    }
+
+            <div class="space-y-8 text-sm md:text-base text-slate-700">
+
+                @if (!string.IsNullOrWhiteSpace(contactAddress))
+        {
+                <div class="flex items-start gap-4">
+                    <div>
+                        <p class="font-semibold text-[#4F5955] mb-1">Office location</p>
+                        <p>@contactAddress</p>
+                    </div>
+                </div>
+        }
+
+                @if (!string.IsNullOrWhiteSpace(contactPhone))
+        {
+                <div class="flex items-start gap-4">
+                    <div>
+                        <p class="font-semibold text-[#4F5955] mb-1">Phone number</p>
+                        <a href="tel:@contactPhone" class="hover:underline">@contactPhone</a>
+                    </div>
+                </div>
+        }
+
+                @if (!string.IsNullOrWhiteSpace(contactEmail))
+        {
+                <div class="flex items-start gap-4">
+                    <div>
+                        <p class="font-semibold text-[#4F5955] mb-1">E-mail address</p>
+                        <a href="mailto:@contactEmail" class="hover:underline">@contactEmail</a>
+                    </div>
+                </div>
+        }
+            </div>
+        </div>
+
+    </div>
+</section>

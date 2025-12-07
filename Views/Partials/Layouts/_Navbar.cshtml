@@ -1,0 +1,49 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
+
+@{
+    var currentPage = Umbraco.AssignedContentItem ?? Model;
+    var root = Umbraco.ContentAtRoot().FirstOrDefault();
+
+    var menuItems = root?
+        .Children()
+        .Where(x => x.IsVisible() && x.ContentType.Alias != "homePage")
+        .ToList();
+}
+
+<nav class="bg-[#ffffff] border-b border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 py-4 flex items-center gap-8">
+
+        <a href="@root?.Url()" class="flex items-center gap-2">
+            <img src="/media/wbob425e/brand.svg"
+                 alt="Onatrix"
+                 class="h-10 w-auto" />
+        </a>
+
+        <div class="flex-1 flex justify-center">
+            <ul class="hidden md:flex items-center gap-20 text-[15px] font-semibold">
+                @if (menuItems != null)
+                {
+                    foreach (var item in menuItems)
+                    {
+                        var isActive = currentPage != null && currentPage.Id == item.Id;
+
+                <li>
+                    <a href="@item.Url()"
+                       class="transition no-underline @(isActive
+                        ? "text-[#d0b79a]"
+                        : "text-[#4f5955] hover:text-[#d0b79a]")">
+                        @item.Name
+                    </a>
+                </li>
+
+                    }
+                }
+            </ul>
+        </div>
+
+        <button type="button"
+                class="text-slate-700 hover:text-slate-900 transition">
+            <i class="fa-solid fa-magnifying-glass text-lg"></i>
+        </button>
+    </div>
+</nav>

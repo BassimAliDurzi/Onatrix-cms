@@ -1,30 +1,344 @@
-﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+﻿@using Umbraco.Cms.Core.Models
+@using Umbraco.Extensions
 @inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<HomePage>
 
 @{
-    Layout = "mainLayout.cshtml";
+    Layout = "MainLayout.cshtml";
 }
 
 <section class="relative py-[7rem]">
     <div class="absolute inset-0">
-        @if (Model.HeroPgImage != null)
-                    {
-        <img src="@Model.HeroPgImage.Url()" class="w-full h-full object-cover" />
+        @if (Model.HeroBgImage != null)
+        {
+        <img src="@Model.HeroBgImage.Url()" class="w-full h-full object-cover" alt="" />
         }
+        <div class="absolute inset-0 bg-gray/10"></div>
     </div>
 
     <div class="container mx-auto px-4 relative z-10">
-        <div class="w-5/12 flex flex-col gap-8">
-            <h1 class="text-[4.5rem] text-[#4f5955] font-bold leading-none">@Model.HeroTitle</h1>
-            <div class="rte">@Html.Raw(Model.HeroText)</div>
+        <div class="w-full md:w-7/12 lg:w-5/12 flex flex-col gap-8">
+            <h1 class="text-[2.75rem] md:text-[3.5rem] lg:text-[4.5rem] text-[#4f5955] font-bold leading-none">
+                @Model.HeroTitle
+            </h1>
 
-            @if (Model.HeroLink != null)
-            {
-            <a class="bg-[#4f5955] text-white py-3 px-10 no-underline rounded cursor-pointer self-start font-bold" href="@Model.HeroLink.Url">
-                @Model.HeroLink.Name
+            <div class="rte text-slate-700">
+                @Html.Raw(Model.HeroText)
+            </div>
+
+            <a class="bg-[#4f5955] text-white py-3 px-10 no-underline rounded cursor-pointer self-start font-bold"
+               href="@(Model.HeroLink?.Url ?? "#")">
+                @(Model.HeroLink?.Name ?? "Contact us")
             </a>
-            }
-
         </div>
     </div>
 </section>
+
+@{
+    var introDescription = Model.Value<string>("introDescription");
+    var introSignature = Model.Value<MediaWithCrops>("introSignature");
+    var introFounder = Model.Value<string>("introFounder");
+}
+
+@if (!string.IsNullOrWhiteSpace(Model.IntroTitle?.ToString())
+    || !string.IsNullOrWhiteSpace(Model.IntroText?.ToString()))
+{
+<section class="py-20 bg-white">
+    <div class="container mx-auto px-4">
+        <div class="grid md:grid-cols-2 gap-12 items-start">
+
+            <div class="space-y-6 max-w-xl">
+                <p class="text-xs font-semibold tracking-[0.25em] uppercase text-[#d8b98c]">
+                    ABOUT US
+                </p>
+
+                <h2 class="text-3xl md:text-4xl font-bold text-[#4f5955]">
+                    @Model.IntroTitle
+                </h2>
+
+                @if (!string.IsNullOrWhiteSpace(Model.IntroText?.ToString()))
+                {
+                <p class="text-base text-[#4f5955] italic">
+                    @Model.IntroText
+                </p>
+                }
+
+                @if (!string.IsNullOrWhiteSpace(introDescription))
+                {
+                <div class="rte text-slate-700">
+                    @Html.Raw(introDescription)
+                </div>
+                }
+
+                @if (introSignature != null || !string.IsNullOrWhiteSpace(introFounder))
+                {
+                <div class="mt-6 space-y-2">
+                    @if (introSignature != null)
+                        {
+                    <img src="@introSignature.Url()" alt="@introFounder"
+                         class="h-16 w-auto" />
+                        }
+
+                    @if (!string.IsNullOrWhiteSpace(introFounder))
+                        {
+                    <p class="text-xs text-slate-500">
+                        @introFounder
+                    </p>
+                        }
+                </div>
+                }
+            </div>
+
+            <div class="flex justify-end">
+                <div class="w-full md:w-[420px] lg:w-[460px] bg-white rounded-none shadow-xl border border-slate-100 relative -top-40">
+                    <div class="bg-[#4f5955] px-8 py-6">
+                        <h3 class="text-2xl font-bold text-white">
+                            Request a call back
+                        </h3>
+                    </div>
+
+                    <div class="px-8 py-8 space-y-6">
+                        <p class="text-sm text-slate-600 leading-relaxed">
+                            Dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur
+                            excepteur sint occaecat
+                        </p>
+
+                        <form class="space-y-4" method="post">
+                            <input type="text" name="name" placeholder="Name"
+                                   class="w-full border border-slate-200 bg-[#fbfbfb] px-4 py-3 text-sm text-slate-700 outline-none focus:border-[#4f5955] focus:bg-white" />
+
+                            <input type="email" name="email" placeholder="Email address"
+                                   class="w-full border border-slate-200 bg-[#fbfbfb] px-4 py-3 text-sm text-slate-700 outline-none focus:border-[#4f5955] focus:bg-white" />
+
+                            <input type="tel" name="phone" placeholder="Phone"
+                                   class="w-full border border-slate-200 bg-[#fbfbfb] px-4 py-3 text-sm text-slate-700 outline-none focus:border-[#4f5955] focus:bg-white" />
+
+                            <select name="service"
+                                    class="w-full border border-slate-200 bg-[#fbfbfb] px-4 py-3 text-sm text-slate-700 outline-none focus:border-[#4f5955] focus:bg-white">
+                                <option>Financial consulting</option>
+                            </select>
+
+                            <button type="submit"
+                                    class="w-full mt-2 bg-[#e9dfc3] text-[#4f5955] font-semibold py-3 text-sm tracking-wide">
+                                Submit
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+}
+
+@{
+    var section1Title = Model.Value<string>("section1Title");
+    var section1Text = Model.Value<string>("section1Text");
+}
+
+@if (!string.IsNullOrWhiteSpace(section1Title)
+    || !string.IsNullOrWhiteSpace(section1Text))
+{
+<section class="py-20 bg-white">
+    <div class="container mx-auto px-4">
+        <div class="max-w-4xl">
+            <p class="text-xs font-semibold tracking-[0.25em] uppercase text-[#d8b98c] mb-3">
+                ABOUT US
+            </p>
+            <h2 class="text-3xl md:text-4xl font-bold text-[#4f5955] mb-6">
+                @section1Title
+            </h2>
+            <div class="rte space-y-4 text-slate-600">
+                @Html.Raw(section1Text)
+            </div>
+        </div>
+    </div>
+</section>
+}
+
+
+@{
+    var services = new[]
+    {
+        new {
+            Title = Model.Value<string>("serviceTitle1"),
+            Photo = Model.Value<MediaWithCrops>("servicePhoto1"),
+            Description = Model.Value<string>("serviceDescription1")
+        },
+        new {
+            Title = Model.Value<string>("serviceTitle2"),
+            Photo = Model.Value<MediaWithCrops>("servicePhoto2"),
+            Description = Model.Value<string>("serviceDescription2")
+        },
+        new {
+            Title = Model.Value<string>("serviceTitle3"),
+            Photo = Model.Value<MediaWithCrops>("servicePhoto3"),
+            Description = Model.Value<string>("serviceDescription3")
+        },
+        new {
+            Title = Model.Value<string>("serviceTitle4"),
+            Photo = Model.Value<MediaWithCrops>("servicePhoto4"),
+            Description = Model.Value<string>("serviceDescription4")
+        },
+        new {
+            Title = Model.Value<string>("serviceTitle5"),
+            Photo = Model.Value<MediaWithCrops>("servicePhoto5"),
+            Description = Model.Value<string>("serviceDescription5")
+        },
+        new {
+            Title = Model.Value<string>("serviceTitle6"),
+            Photo = Model.Value<MediaWithCrops>("servicePhoto6"),
+            Description = Model.Value<string>("serviceDescription6")
+        }
+    };
+
+    var serviceTitle = Model.Value<string>("serviceTitle");
+    var serviceText = Model.Value<string>("serviceText");
+}
+
+@if (!string.IsNullOrWhiteSpace(serviceTitle)
+    || !string.IsNullOrWhiteSpace(serviceText))
+{
+<section class="py-20 bg-[#ffffff]">
+    <div class="container mx-auto px-4">
+        <div class="text-center mb-12">
+            <p class="text-xl font-bold tracking-[0.25em] uppercase text-[#c2a97b]">
+                @serviceTitle
+            </p>
+            <div class="mt-4 text-3xl md:text-4xl font-bold text-[#4f5955] leading-snug rte">
+                @Html.Raw(serviceText)
+            </div>
+        </div>
+
+        <div class="mt-12 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+            @foreach (var service in services)
+            {
+                if (string.IsNullOrWhiteSpace(service.Title)
+                    && service.Photo == null
+                    && string.IsNullOrWhiteSpace(service.Description))
+                {
+                    continue;
+                }
+
+            <article class="bg-white border border-slate-50 shadow-sm">
+                <div class="-px py-6 ">
+                    @if (!string.IsNullOrWhiteSpace(service.Title))
+                        {
+                    <h3 class="text-lg font-semibold text-[#4f5955] mb-3 relative -right-10">
+                        @service.Title
+                    </h3>
+                        }
+
+                    @if (service.Photo != null)
+     {
+                    <div class="h-56 w-full overflow-hidden mb-7">
+                        <img src="@service.Photo.Url()" alt="@service.Title" class="h-full w-full object-cover" />
+                    </div>
+     }
+
+                    @if (!string.IsNullOrWhiteSpace(service.Description))
+                        {
+                    <div class="text-m text-slate-600 leading-relaxed relative -right-10">
+                        @Html.Raw(service.Description)
+                    </div>
+                        }
+                </div>
+            </article>
+            }
+        </div>
+    </div>
+</section>
+}
+
+@{
+    var trustedTitle = Model.Value<string>("section2Title");
+    var trustedText = Model.Value<string>("section2Text");
+    var trustedPhoto = Model.Value<MediaWithCrops>("section2Photo");
+}
+
+@if (!string.IsNullOrWhiteSpace(trustedTitle)
+    || !string.IsNullOrWhiteSpace(trustedText)
+    || trustedPhoto != null)
+{
+<section class="py-20 bg-white">
+    <div class="container mx-auto px-4 space-y-10">
+        <div class="text-center max-w-3xl mx-auto">
+            @if (!string.IsNullOrWhiteSpace(trustedTitle))
+            {
+            <h2 class="text-3xl md:text-4xl font-bold text-[#4f5955] mb-4">
+                @trustedTitle
+            </h2>
+            <h2 class="text-3xl md:text-4xl font-bold text-[#D9C3A9] mb-8">
+                4.000+ clients
+            </h2>
+            }
+
+            @if (!string.IsNullOrWhiteSpace(trustedText))
+            {
+            <div class="rte text-slate-600">
+                @Html.Raw(trustedText)
+            </div>
+            }
+
+            <a href="#"
+               class="inline-block mx-auto bg-[#4f5955] text-[#F2EDDC] font-semibold py-4 px-4 rounded-md no-underline text-center mt-10 mb-20">
+                Read our story
+            </a>
+        </div>
+
+
+        @if (trustedPhoto != null)
+        {
+        <div class="max-w-5xl mx-auto">
+            <img src="@trustedPhoto.Url()" alt="@trustedTitle" class="w-full object-contain" />
+        </div>
+        }
+
+    </div>
+</section>
+}
+
+@if (!string.IsNullOrWhiteSpace(Model.Section3Title?.ToString())
+    || !string.IsNullOrWhiteSpace(Model.Section3Text?.ToString()))
+{
+<section class="py-20 bg-[#4f5955] text-white relative -top-20">
+    <div class="container mx-auto px-4">
+
+        <div class="text-center mb-12">
+            <p class="text-xs font-semibold tracking-[0.25em] uppercase text-[#e3d4aa]">
+                @Model.Section3Title
+            </p>
+
+            <h2 class="mt-3 text-3xl md:text-5xl font-bold">
+                @Model.Section3Text
+            </h2>
+        </div>
+
+        <div class="max-w-5xl mx-auto grid md:grid-cols-3 gap-10 text-center">
+
+            <div>
+                <p class="text-5xl font-bold text-[#e3d4aa] mb-2">689</p>
+                <p class="text-m">More than 100 customers has been served</p>
+            </div>
+
+            <div>
+                <p class="text-5xl font-bold text-[#e3d4aa] mb-2">370</p>
+                <p class="text-m">More than 370 projects has been completed</p>
+            </div>
+
+            <div>
+                <p class="text-5xl font-bold text-[#e3d4aa] mb-2">125</p>
+                <p class="text-m">More than 125 branches has been established in Europe and America</p>
+            </div>
+
+        </div>
+
+        @if (Model.Section3Photo != null)
+        {
+        <div class="mt-16 flex justify-center relative">
+            <img src="@Model.Section3Photo.Url()" />
+        </div>
+        }
+
+    </div>
+</section>
+}
