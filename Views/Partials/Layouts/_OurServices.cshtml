@@ -1,0 +1,98 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
+@using Umbraco.Cms.Core.Models
+@using Umbraco.Extensions
+
+@{
+    var home = Model.Root();
+
+    var services = new[]
+    {
+        new {
+            Title = home.Value<string>("serviceTitle1"),
+            Photo = home.Value<MediaWithCrops>("servicePhoto1"),
+            Description = home.Value<string>("serviceDescription1")
+        },
+        new {
+            Title = home.Value<string>("serviceTitle2"),
+            Photo = home.Value<MediaWithCrops>("servicePhoto2"),
+            Description = home.Value<string>("serviceDescription2")
+        },
+        new {
+            Title = home.Value<string>("serviceTitle3"),
+            Photo = home.Value<MediaWithCrops>("servicePhoto3"),
+            Description = home.Value<string>("serviceDescription3")
+        },
+        new {
+            Title = home.Value<string>("serviceTitle4"),
+            Photo = home.Value<MediaWithCrops>("servicePhoto4"),
+            Description = home.Value<string>("serviceDescription4")
+        },
+        new {
+            Title = home.Value<string>("serviceTitle5"),
+            Photo = home.Value<MediaWithCrops>("servicePhoto5"),
+            Description = home.Value<string>("serviceDescription5")
+        },
+        new {
+            Title = home.Value<string>("serviceTitle6"),
+            Photo = home.Value<MediaWithCrops>("servicePhoto6"),
+            Description = home.Value<string>("serviceDescription6")
+        }
+    };
+
+    var serviceTitle = home.Value<string>("serviceTitle");
+    var serviceText = home.Value<string>("serviceText");
+}
+
+@if (!string.IsNullOrWhiteSpace(serviceTitle)
+    || !string.IsNullOrWhiteSpace(serviceText))
+{
+<section class="py-20 bg-[#ffffff]">
+    <div class="container mx-auto px-4">
+        <div class="text-center mb-12">
+            <p class="text-xl font-bold tracking-[0.25em] uppercase text-[#c2a97b]">
+                @serviceTitle
+            </p>
+            <div class="mt-4 text-3xl md:text-4xl font-bold text-[#4f5955] leading-snug rte">
+                @Html.Raw(serviceText)
+            </div>
+        </div>
+
+        <div class="mt-12 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+            @foreach (var service in services)
+            {
+                if (string.IsNullOrWhiteSpace(service.Title)
+                    && service.Photo == null
+                    && string.IsNullOrWhiteSpace(service.Description))
+                {
+                    continue;
+                }
+
+            <article class="bg-white border border-slate-50 shadow-sm">
+                <div class="px-6 py-6">
+                    @if (!string.IsNullOrWhiteSpace(service.Title))
+                        {
+                    <h3 class="text-lg font-semibold text-[#4f5955] mb-3 relative -right-10">
+                        @service.Title
+                    </h3>
+                        }
+
+                    @if (service.Photo != null)
+                        {
+                    <div class="h-56 w-full overflow-hidden mb-7">
+                        <img src="@service.Photo.Url()" alt="@service.Title" class="h-full w-full object-cover" />
+                    </div>
+                        }
+
+                    @if (!string.IsNullOrWhiteSpace(service.Description))
+                        {
+                    <div class="text-m text-slate-600 leading-relaxed relative -right-10">
+                        @Html.Raw(service.Description)
+                    </div>
+                        }
+                </div>
+            </article>
+            }
+        </div>
+    </div>
+</section>
+}
